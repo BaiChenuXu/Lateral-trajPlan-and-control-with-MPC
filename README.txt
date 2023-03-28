@@ -43,6 +43,8 @@ if you complete the above config steps, and run the test, but it still not work.
 open the visual studio->Tools->Options->Debugging->Symbols and select "Microsoft Symbol Servers" and "NuGet.org Symbol Server"
 then run the test program and patiently wait the finish of downloading the symbols.
 
+finally, let the simuAnimation.m file go into the matlab search path. (use the matlab "Set Path")
+
 2) this demo use Eigen library do the matrx calculation.
 we can use Eigen library without installing, do the following steps: 
 - download the Eigen from https://github.com/PX4/eigen
