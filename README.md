@@ -16,5 +16,5 @@ The program organization of this demo:
 Currently, this demo run on the windows system and visual studio IDE.
 
 This demo use the self-defined matlab function to show the simulation
-animation. You could open the simuResultAnimation.mp4 firstly to see
+animation. You could open the simuAnimation.mp4 firstly to see
 the normal run result before runing the program by yourself.
