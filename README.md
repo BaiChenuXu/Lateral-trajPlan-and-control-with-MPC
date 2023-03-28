@@ -1,5 +1,6 @@
 # Lateral-trajPlan-and-control-with-MPC
 This demo is surbodinate to the ADAS.
+
 It show how to conduct the lateral planning from the current lateral deviation
 to back to the lane center after a certain distance, and
 how to use MPC to control vehicle track the planning trajectory.
