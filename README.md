@@ -12,7 +12,7 @@ The program organization of this demo:
     and calculate the control error
 4) get optmizition control value with MPC
 5) update the vehicle state with lateral vehicle dynamic model 
-   of linear and 2 freedom degree
+   of linear and 2 degree of freedom
 
 Currently, this demo run on the windows system and visual studio IDE.
 
