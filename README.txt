@@ -65,34 +65,34 @@ https://blog.csdn.net/u010149495/article/details/122075415 (in chinese)
 
 before compile the osqp, you need the qdldl library
 download it: https://github.com/osqp/qdldl
-and put all the content in the D:\osqp\lin_sys\direct\qdldl\qdldl_sources
+and put all the content into the D:\osqp\lin_sys\direct\qdldl\qdldl_sources
 (suppose you place folder in the D:\ and the folder name is "\osqp")
 
 when use cmake compile the osqpEigen, the key step is config the Eigen3_DIR and the osqp_DIR
 Eigen3_DIR: D:/eigen/bulid (suppose you place folder in the D:\ and the folder name is "eigen")
 osqp_DIR: C:/Program Files/osqp/lib/cmake/osqp (if you installed the osqp correctly, the folder will appear in the C:/Program Files)
 
-after complete the compile by cmake, you will get the osqp.sln and OsqpEigen.sln in the respective "bulid" folder
-(when use cmake to complie, you create the "bulid" folder)
+after complete the compile by cmake, you will get the osqp.sln and OsqpEigen.sln in the respective "build" folder
+(when use cmake to complie, you should create the "build" folder)
 
-use the visual studio (2022) open the *.sln (run with administrator), and the find the "INSTALL" in the "Solution Exploer",
-then right click->bulid
+use the visual studio (2022) open the *.sln (run with administrator), and then find the "INSTALL" in the "Solution Exploer",
+then right click->build
 
 after installed the osqp and the OsqpEigen correctly, you will get the 2 folder in the C:/Program Files:
 - C:\Program Files\osqp
 - C:\Program Files\OsqpEigen
 
 the final step:
-open the Local Windows Debugger->LatPlanAndCtl_wMPC Debug Properties->C/C++->General
+open the visual studio->Local Windows Debugger->LatPlanAndCtl_wMPC Debug Properties->C/C++->General
  ->Additional Include Directories ->Edit->type in: 
 "C:\Program Files\osqp\include\osqp"
 "C:\Program Files\OsqpEigen\include"
 and
-LatPlanAndCtl_wMPC Debug Properties->Linker->General->Additional Library Directories->Edit-> type in: 
+go into LatPlanAndCtl_wMPC Debug Properties->Linker->General->Additional Library Directories->Edit-> type in: 
 "C:\Program Files\osqp\lib"
 "C:\Program Files\OsqpEigen\lib"
 and
-LatPlanAndCtl_wMPC Debug Properties->Linker->input->Additional Dependencise->Edit-> type in:
+go into LatPlanAndCtl_wMPC Debug Properties->Linker->input->Additional Dependencise->Edit-> type in:
 "osqp.lib"
 "qdldl.lib"
 "OsqpEigend.lib"
