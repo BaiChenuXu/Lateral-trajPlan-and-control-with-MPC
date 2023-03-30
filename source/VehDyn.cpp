@@ -13,7 +13,7 @@ VehDyn::VehDyn()
 //Regarding to the discret state space equation matrixs A and B (x_k+1 = A*x_k + B*u)
 //the references are:
 //1) book: "Vehicle Dynamics and Control by Rajesh Rajamani", chapter 2, page 20;
-//2) book(in chinese): "汽车理论 (余志生)",chapter 5, page 146;  
+//2) book(in chinese): "脝没鲁碌脌铆脗脹 (脫脿脰戮脡煤)",chapter 5, page 146;  
 //Regarding to the discret state space equation matrixs A_baseErr and B_baseErr 
 //(err_k+1 = A_baseErr*err_k + B_baseErr*u);
 //the amazing reference is:
@@ -67,27 +67,11 @@ void VehDyn::vehStateEqua()
 	m_B_matrix(1, 0) = l_matrixElement_b21;
 	m_B_matrix(3, 0) = l_matrixElement_b41;
 
-	m_A_matrix_baseErr = (l_matrixEye - m_A_matrix_baseErr * m_ctlSysPara_obj_vd.m_tDurPerStep / 2) 
-		* (l_matrixEye + m_A_matrix_baseErr * m_ctlSysPara_obj_vd.m_tDurPerStep / 2).inverse();
+	m_A_matrix_baseErr = (l_matrixEye - m_A_matrix_baseErr * m_ctlSysPara_obj_vd.m_tDurPerStep / 2).inverse() 
+		* (l_matrixEye + m_A_matrix_baseErr * m_ctlSysPara_obj_vd.m_tDurPerStep / 2);
 
-	m_A_matrix = (l_matrixEye - m_A_matrix * m_ctlSysPara_obj_vd.m_tDurPerStep / 2)
-		* (l_matrixEye + m_A_matrix * m_ctlSysPara_obj_vd.m_tDurPerStep / 2).inverse();
-
-	//Use Matlab algorithem A\B instead of A*inv(B) to get more accurate discret matrix A
-	//and then input the number value directly, the accuracy of the matrix A has a huge 
-	//influence of MPC algorithem.
-	//Next version, the writer will add a funciton that use the method of solving the
-	//linear equation set to get the accuracy discret matrix A and B.
-	m_A_matrix_baseErr << 1.0000, 0.0098, 0.0082, 0.0001,
-		0, 0.9505, 1.6344, 0.0109,
-		0, 0.0001, 0.9957, 0.0080,
-		0, 0.0262, -0.8660, 0.6021;
-
-	// same as above
-	m_A_matrix << 1.0000, 0.0097, 0, -0.0013,
-		0, 0.9461, 0, -0.2535,
-		0, 0.0001, 1.0000, 0.0080,
-		0, 0.0262, 0, 0.6021;
+	m_A_matrix = (l_matrixEye - m_A_matrix * m_ctlSysPara_obj_vd.m_tDurPerStep / 2).inverse()
+		* (l_matrixEye + m_A_matrix * m_ctlSysPara_obj_vd.m_tDurPerStep / 2);
 
 	m_B_matrix = m_B_matrix * m_ctlSysPara_obj_vd.m_tDurPerStep;
 
