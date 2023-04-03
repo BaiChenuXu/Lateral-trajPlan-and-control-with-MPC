@@ -41,6 +41,7 @@ https://ww2.mathworks.cn/help/matlab/matlab_external/pass-variables-from-c-to-ma
 
 if you complete the above config steps, and run the test, but it still not work. 
 open the visual studio->Tools->Options->Debugging->Symbols and select "Microsoft Symbol Servers" and "NuGet.org Symbol Server"
+you could also add another symbols server http://msdl.microsoft.com/download/symbols to make sure the request symbols are downloaded
 then run the test program and patiently wait the finish of downloading the symbols.
 
 finally, let the simuAnimation.m file go into the matlab search path. (use the matlab "Set Path")
@@ -83,7 +84,9 @@ after installed the osqp and the OsqpEigen correctly, you will get the 2 folder 
 - C:\Program Files\OsqpEigen
 
 the final step:
-open the visual studio->Local Windows Debugger->LatPlanAndCtl_wMPC Debug Properties->C/C++->General
+open the visual studio->Local Windows Debugger->LatPlanAndCtl_wMPC Debug Properties->Debug->environment->PAth="C:\Program Files\OsqpEigen\bin"
+and
+go into LatPlanAndCtl_wMPC Debug Properties->C/C++->General
  ->Additional Include Directories ->Edit->type in: 
 "C:\Program Files\osqp\include\osqp"
 "C:\Program Files\OsqpEigen\include"
